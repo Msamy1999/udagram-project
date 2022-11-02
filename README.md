@@ -1,13 +1,15 @@
 # udagram-project
+
 ## Hosting a Full-Stack Application
 
 ### Udagram
 
-##Site
+## Site
 
 http://udagram-api-dev.eba-cpdffcj3.us-east-1.elasticbeanstalk.com/
 
-##Github 
+## Github
+
 https://github.com/udacity/nd0067-c4-deployment-process-project-starter.git
 
 Installation
@@ -18,7 +20,6 @@ In AWS, provision a s3 bucket for hosting the uploaded files.
 Export the ENV variables needed or use a package like dotnev/.
 From the root of the repo, navigate udagram-api folder cd starter/udagram-api to install the node_modules npm install. After installation is done start the api in dev mode with npm run dev.
 Without closing the terminal in step 1, navigate to the udagram-frontend cd starter/udagram-frontend to intall the node_modules npm install. After installation is done start the api in dev mode with npm run start.
-
 
 ### Testing
 
