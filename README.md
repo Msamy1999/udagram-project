@@ -6,13 +6,14 @@
 
 ## Site
 
-http://udagram-api-dev.eba-cpdffcj3.us-east-1.elasticbeanstalk.com/
+http://udacity-project-aws.s3-website-us-east-1.amazonaws.com/home
 
 ## Github
 
 https://github.com/udacity/nd0067-c4-deployment-process-project-starter.git
 
-Installation
+## Installation
+
 Provision the necessary AWS services needed for running the application:
 
 In AWS, provision a publicly available RDS database running Postgres.

@@ -6,21 +6,28 @@ FrontEnd Deploy Script:
 BackEnd Deploy Script:
 
 cd ./www
-eb init udacity-project-aws --region us-east-q --platform node.js
-eb use udacity-project-aws-dev
-eb setenv POSTGRES_HOST=$POSTGRES_HOST PORT=$PORT POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_PASSWORD=$POSTGRES_PASSWORD POSTGRES_DB=$POSTGRES_DB DB_PORT=$DB_PORT AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION    URL=$URL JWT_SECRET=$JWT_SECRET EB_APP=$EB_APP EB_ENV=$EB_ENV AWS_BUCKET=$AWS_BUCKET
-eb deploy
+eb init udagram-api --platform node.js --region us-east-1
+eb create --sample udagram-api-dev
+eb use udagram-api-dev
+yarn build
+eb deploy udagram-api-dev
+eb open
 
-Pipeline Jobs:
+## Pipeline Jobs:
 
-    - Install Dependencies for Front & BackEnd Commands:
-        - cd udagram-api && npm install
-        - cd udagram-frontend && npm install
+    ### Steps;
 
-    - Build BackEnd & FrontEnd Commands:
-        - cd udagram-api && npm run build
-        - cd udagram-frontend && npm run build
-
-    - Deploy FrontEnd & BackEnd Commands:
-        - cd udagram-api && npm run deploy
-        - cd udagram-frontend && npm run deploy
+        -Developer update the code localy
+        -Push the changes to the github repo
+        -Circle Ci will trigger this changes and will start the pipeline
+        -Install Node
+        -Install AWS Elastic Beanstalk
+        -Install AWS CLI
+        -Install Front-End Dependencies
+        -Lint Front-End
+        -Install API Dependencies
+        -Build Front-End
+        -Build API
+        -Wait for the user's approval to deploy the application
+        -Update API code in Elastic Beanstalk
+        -Update Front-End code in S3 Bucket
