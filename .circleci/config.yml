@@ -47,15 +47,18 @@ jobs:
       - aws-cli/setup
       - checkout
       - run:
-          name: Adding Environment Variables to EB
-          command: |
-            cd udagram/udagram-api
-            eb use udacity-project-aws
-            eb setenv POSTGRES_USERNAME=${POSTGRES_USERNAME} POSTGRES_PASSWORD=${POSTGRES_PASSWORD} POSTGRES_HOST=${POSTGRES_HOST} POSTGRES_DB=${POSTGRES_DB} DB_PORT=${DB_PORT} PORT=${PORT} AWS_BUCKET=${AWS_BUCKET} AWS_REGION=${AWS_REGION} AWS_PROFILE=${AWS_PROFILE} JWT_SECRET=${JWT_SECRET} URL=${URL}
-      - run:
           name: Deploy App
+          # TODO: Install, build, deploy in both apps
           command: |
-            npm run deploy
+            npm run frontend:deploy
+      - run:
+          name: Set Elastic Beanstalk Environment Variables
+          command: |
+            npm run api:set_eb_env
+      - run:
+          name: Deploy API to EB
+          command: |
+            npm run api:deploy
 
 workflows:
   udagram:
